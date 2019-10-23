@@ -17,12 +17,12 @@
   
   Spacy for S-P-O extraction - [Peter's Github](https://github.com/peter3125/enhanced-subject-verb-object-extraction) 
   
+  [NLTK approach](https://github.com/acrosson/nlp/blob/master/subject_extraction/subject_extraction.py) - Poor performance!
+
 ## Things to explore
   
   [Stanford Parser approach](https://playwithml.wordpress.com/2016/06/15/extracting-relations-or-subject-predicate-object-triples/)
-  
-  [NLTK approach](https://github.com/acrosson/nlp/blob/master/subject_extraction/subject_extraction.py)
-  
+    
   Few-shot learning based approach for Visual Relationship detection.
   
   Triplet loss function.

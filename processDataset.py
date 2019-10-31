@@ -8,7 +8,7 @@ matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 
 #Just change this based on the file and predicate used
-predicate = 'next to'
+predicate = 'on'
 filename = "sg_test_annotations.json"
 
 #From here on you don't need to change anything
@@ -18,9 +18,11 @@ else:
     newFilename = str(predicate + '_train_triplets.json')
 
 data = {'predicate': predicate, 'examples': []}
-def addToData(filename, p_bbox1, p_bbox2, n_bbox1, n_bbox2, p_name1, p_name2, n_name1, n_name2, relationship_p, relationship_n):
+def addToData(filename1, filename2, p_bbox1, p_bbox2, n_bbox1, n_bbox2, p_name1, p_name2, n_name1, n_name2, relationship_p, relationship_n):
     row = {}
-    row['filename'] = filename
+    row['filename1'] = filename1
+    row['filename2'] = filename2
+
     row['positive'] = {}
     row['negative'] = {}
 
@@ -76,28 +78,29 @@ if filename:
                     p_objname1 = datastore[it]['objects'][obj1]['names'][0]
                     p_objname2 = datastore[it]['objects'][obj2]['names'][0]
 
-                    nearest2obj1 = -1
-                    dist_obj1 = -1
-                    nearest2obj2 = -1
-                    dist_obj2 = -1
-                    for j in range(i+1,len(datastore[it]['relationships'])):
-                        row = datastore[it]['relationships'][j]
-                        if(datastore[it]['objects'][row['objects'][0]]['names'][0]==datastore[it]['objects'][obj1]['names'][0]
-                                and datastore[it]['objects'][row['objects'][1]]['names'][0]==datastore[it]['objects'][obj2]['names'][0]
-                                and row['relationship']!=predicate):
-                            n_bb1 = datastore[it]['objects'][row['objects'][0]]['bbox']
-                            n_bb2 = datastore[it]['objects'][row['objects'][1]]['bbox']
-                            n_objname1 = datastore[it]['objects'][row['objects'][0]]['names'][0]
-                            n_objname2 = datastore[it]['objects'][row['objects'][1]]['names'][0]
-                            addToData(datastore[it]['filename'], p_bb1, p_bb2, n_bb1, n_bb2, p_objname1, p_objname2,n_objname1, n_objname2, predicate, row['relationship'])
-                        elif(datastore[it]['objects'][row['objects'][0]]['names'][0]==datastore[it]['objects'][obj2]['names'][0]
-                                and datastore[it]['objects'][row['objects'][1]]['names'][0]==datastore[it]['objects'][obj1]['names'][0]
-                                and row['relationship']!=predicate):
-                            n_bb1 = datastore[it]['objects'][row['objects'][1]]['bbox']
-                            n_bb2 = datastore[it]['objects'][row['objects'][0]]['bbox']
-                            n_objname1 = datastore[it]['objects'][row['objects'][1]]['names'][0]
-                            n_objname2 = datastore[it]['objects'][row['objects'][0]]['names'][0]
-                            addToData(datastore[it]['filename'], p_bb1, p_bb2, n_bb1, n_bb2, p_objname1, p_objname2,n_objname1, n_objname2, predicate, row['relationship'])
+                    for it2 in range(it+1, len(datastore)):
+                        nearest2obj1 = -1
+                        dist_obj1 = -1
+                        nearest2obj2 = -1
+                        dist_obj2 = -1
+                        for j in range(len(datastore[it2]['relationships'])):
+                            row = datastore[it2]['relationships'][j]
+                            if(datastore[it2]['objects'][row['objects'][0]]['names'][0]==datastore[it]['objects'][obj1]['names'][0]
+                                    and datastore[it2]['objects'][row['objects'][1]]['names'][0]==datastore[it]['objects'][obj2]['names'][0]
+                                    and row['relationship']!=predicate):
+                                n_bb1 = datastore[it2]['objects'][row['objects'][0]]['bbox']
+                                n_bb2 = datastore[it2]['objects'][row['objects'][1]]['bbox']
+                                n_objname1 = datastore[it2]['objects'][row['objects'][0]]['names'][0]
+                                n_objname2 = datastore[it2]['objects'][row['objects'][1]]['names'][0]
+                                addToData(datastore[it]['filename'], datastore[it2]['filename'], p_bb1, p_bb2, n_bb1, n_bb2, p_objname1, p_objname2,n_objname1, n_objname2, predicate, row['relationship'])
+                            elif(datastore[it2]['objects'][row['objects'][0]]['names'][0]==datastore[it]['objects'][obj2]['names'][0]
+                                    and datastore[it2]['objects'][row['objects'][1]]['names'][0]==datastore[it]['objects'][obj1]['names'][0]
+                                    and row['relationship']!=predicate):
+                                n_bb1 = datastore[it2]['objects'][row['objects'][1]]['bbox']
+                                n_bb2 = datastore[it2]['objects'][row['objects'][0]]['bbox']
+                                n_objname1 = datastore[it2]['objects'][row['objects'][1]]['names'][0]
+                                n_objname2 = datastore[it2]['objects'][row['objects'][0]]['names'][0]
+                                addToData(datastore[it]['filename'], datastore[it2]['filename'], p_bb1, p_bb2, n_bb1, n_bb2, p_objname1, p_objname2,n_objname1, n_objname2, predicate, row['relationship'])
 
 with open(newFilename, 'w') as f:
     json.dump(data, f)

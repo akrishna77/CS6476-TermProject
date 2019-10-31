@@ -1,5 +1,8 @@
 # CS6476-TermProject
 
+## Project Website
+  https://akrishna77.github.io/visual-relationships/proposal/
+
 ## Running the Notebook
   Create a virtual environment, to avoid dependency mismatches.
   ```
@@ -15,15 +18,17 @@
 ## Implemented so far
   Faster-RCNN - [Satya Mallick's Blog](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch/)
   
-  Spacy for S-P-O extraction - [Peter's Github](https://github.com/peter3125/enhanced-subject-verb-object-extraction) 
+  Spacy for S-P-O extraction - [Peter's Github](https://github.com/peter3125/enhanced-subject-verb-object-extraction) - Sticking with this!
   
   [NLTK approach](https://github.com/acrosson/nlp/blob/master/subject_extraction/subject_extraction.py) - Poor performance!
 
-## Things to explore
-  
-  [Stanford Parser approach](https://playwithml.wordpress.com/2016/06/15/extracting-relations-or-subject-predicate-object-triples/)
+  [Stanford Parser approach](https://playwithml.wordpress.com/2016/06/15/extracting-relations-or-subject-predicate-object-triples/) - Poor Performance!
+
+  Triplet Mining from Dataset
     
   Few-shot learning based approach for Visual Relationship detection.
+
+## Things to explore
   
   Triplet loss function.
   

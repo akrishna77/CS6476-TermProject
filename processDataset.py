@@ -1,6 +1,6 @@
 #If positive example is (man, next to, bus)
 #The negative example will be like (man, leaning on, bus)
-
+print("test")
 import json
 import imageio
 import matplotlib

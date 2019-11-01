@@ -26,12 +26,10 @@
 
   Triplet Mining from Dataset
     
-  Few-shot learning based approach for Visual Relationship detection.
+  Few-shot learning based approach for Visual Relationship detection -  triplet loss function. (Ongoing)
 
 ## Things to explore
-  
-  Triplet loss function.
-  
+    
   Object pair filtering.
   
 ## Misc

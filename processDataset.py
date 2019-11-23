@@ -1,6 +1,10 @@
 #If positive example is (man, next to, bus)
 #The negative example will be like (man, leaning on, bus)
+<<<<<<< HEAD
 print("test")
+=======
+
+>>>>>>> 313733b439d2303e1b4d2709cc53526de352aaa7
 import json
 import imageio
 import matplotlib

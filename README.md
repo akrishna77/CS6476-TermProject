@@ -1,7 +1,7 @@
 # CS6476-TermProject
 
 ## Project Website
-  https://akrishna77.github.io/visual-relationships/proposal/
+  https://akrishna77.github.io/visual-relationships/
 
 ## Running the Notebook
   Create a virtual environment, to avoid dependency mismatches.

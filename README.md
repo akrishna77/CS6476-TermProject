@@ -17,7 +17,7 @@ Here is a list of the functionality of each notebook in this repo:
 * triplets_dataset - <anchor, positive, negative> triplets mined for our triplet-based approach.
 * models - Contains our best models from the appraoches we tried.
 
-  Our best model can be found at : [](https://tinyurl.com/r9pldad)
+  Our best model can be found at : https://tinyurl.com/r9pldad
   
 ## Misc
 
